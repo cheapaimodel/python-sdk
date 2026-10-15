@@ -13,7 +13,7 @@ from openai import AsyncOpenAI, OpenAI
 __all__ = ["CheapAIModel", "AsyncCheapAIModel", "DEFAULT_BASE_URL", "__version__"]
 __version__ = "0.1.0"
 
-DEFAULT_BASE_URL = "https://api.cheapaimodel.com/v1"
+DEFAULT_BASE_URL = "https://api.cheapaimodel.ai/v1"
 
 
 def _resolve(api_key: str | None, base_url: str | None) -> tuple[str, str]:
@@ -30,14 +30,14 @@ class CheapAIModel(OpenAI):
     """Synchronous client. Use it exactly like ``openai.OpenAI``.
 
     >>> client = CheapAIModel()  # reads CHEAPAIMODEL_API_KEY
-    >>> client.chat.completions.create(model="gpt-4o-mini", messages=[...])
+    >>> client.chat.completions.create(model="glm-5.3-flash", messages=[...])
     """
 
     def __init__(self, *, api_key: str | None = None, base_url: str | None = None, **kwargs: Any) -> None:
         key, url = _resolve(api_key, base_url)
         super().__init__(api_key=key, base_url=url, **kwargs)
 
-    def chat_text(self, prompt: str, *, model: str = "gpt-4o-mini", **kwargs: Any) -> str:
+    def chat_text(self, prompt: str, *, model: str = "glm-5.3-flash", **kwargs: Any) -> str:
         """Shortcut: send one user message and return the reply text."""
         res = self.chat.completions.create(
             model=model, messages=[{"role": "user", "content": prompt}], **kwargs
@@ -52,7 +52,7 @@ class AsyncCheapAIModel(AsyncOpenAI):
         key, url = _resolve(api_key, base_url)
         super().__init__(api_key=key, base_url=url, **kwargs)
 
-    async def chat_text(self, prompt: str, *, model: str = "gpt-4o-mini", **kwargs: Any) -> str:
+    async def chat_text(self, prompt: str, *, model: str = "glm-5.3-flash", **kwargs: Any) -> str:
         """Shortcut: send one user message and return the reply text."""
         res = await self.chat.completions.create(
             model=model, messages=[{"role": "user", "content": prompt}], **kwargs

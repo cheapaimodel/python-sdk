@@ -21,7 +21,7 @@ classifiers = [
 dev = ["pytest"]
 
 [project.urls]
-Homepage = "https://cheapaimodel.com"
+Homepage = "https://cheapaimodel.ai"
 Repository = "https://github.com/cheapaimodel/python-sdk"
 
 [tool.hatch.build.targets.wheel]

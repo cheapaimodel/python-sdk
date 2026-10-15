@@ -1,6 +1,6 @@
 # CheapAIModel Python SDK
 
-Lightweight Python client for the [CheapAIModel](https://cheapaimodel.com) API.
+Lightweight Python client for the [CheapAIModel](https://cheapaimodel.ai) API.
 
 CheapAIModel is OpenAI-compatible, so this SDK extends the official `openai` package — every method you know from OpenAI works the same way.
 
@@ -18,7 +18,7 @@ from cheapaimodel import CheapAIModel
 client = CheapAIModel()  # reads CHEAPAIMODEL_API_KEY
 
 res = client.chat.completions.create(
-    model="gpt-4o-mini",
+    model="glm-5.3-flash",
     messages=[{"role": "user", "content": "Hello!"}],
 )
 print(res.choices[0].message.content)
@@ -31,7 +31,7 @@ print(client.chat_text("Summarize the plot of Romeo and Juliet in one line."))
 
 ```python
 stream = client.chat.completions.create(
-    model="gpt-4o-mini",
+    model="glm-5.3-flash",
     messages=[{"role": "user", "content": "Tell me a joke"}],
     stream=True,
 )
@@ -58,7 +58,7 @@ asyncio.run(main())
 | Option | Env variable | Default |
 | --- | --- | --- |
 | `api_key` | `CHEAPAIMODEL_API_KEY` | — (required) |
-| `base_url` | `CHEAPAIMODEL_BASE_URL` | `https://api.cheapaimodel.com/v1` |
+| `base_url` | `CHEAPAIMODEL_BASE_URL` | `https://api.cheapaimodel.ai/v1` |
 
 Any other argument (`timeout`, `max_retries`, ...) is passed straight to the OpenAI client.
 
